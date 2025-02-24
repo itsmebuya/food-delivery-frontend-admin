@@ -21,8 +21,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="">
+    <div className="flex">
       <SideMenu/>
+      <div className="bg-black h-[100px] w-[100px]">asdas</div>
     </div>
   );
 }
