@@ -8,7 +8,7 @@ import Link from "next/link"
 export const SideMenu = () => {
 
     return (
-        <div className="h-screen w-[205px] py-9 px-5 flex flex-col gap-10 bg-[#FFF] ">
+        <div className="h-screen w-[100%] py-9 px-5 flex flex-col gap-10 bg-[#FFF] ">
             <Link href={"/"} className="flex gap-2.5">
                 <Logo />
                 <div className="flex flex-col ">
