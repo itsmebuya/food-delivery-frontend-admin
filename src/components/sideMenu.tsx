@@ -5,7 +5,11 @@ import SettingLogo from "@/assets/svg/setting_logo"
 import { HeaderCard } from "./menuCard"
 import Link from "next/link"
 
-export const SideMenu = () => {
+export const SideMenu = ({ setPage }: { setPage: (value: string) => void }) => {
+
+    const onClick = (page: string) => {
+        setPage(page)
+    }
 
     return (
         <div className="h-screen w-[100%] py-9 px-5 flex flex-col gap-10 bg-[#FFF] ">
@@ -17,9 +21,9 @@ export const SideMenu = () => {
                 </div>
             </Link>
             <div className="flex flex-col gap-6">
-                <HeaderCard title="Food menu" Logo={FoodMenuLogo} />
-                <HeaderCard title="Orders" Logo={OrderLogo} />
-                <HeaderCard title="Settings" Logo={SettingLogo} />
+                <HeaderCard title="Food menu" Logo={FoodMenuLogo} onClick={() => onClick("Food menu")} />
+                <HeaderCard title="Orders" Logo={OrderLogo} onClick={() => onClick("Orders")} />
+                <HeaderCard title="Settings" Logo={SettingLogo} onClick={() => onClick("Settings")} />
             </div>
         </div>
     )
