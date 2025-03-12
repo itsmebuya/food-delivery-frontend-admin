@@ -1,12 +1,13 @@
 'use client'
 
-import { DishCategory } from "./_features/dishCategory"
+import { CategoryFilter } from "./_features/categoryFilter"
 
 export const FoodMenu = () => {
 
     return(
         <div>
-            <DishCategory />
+            <p>Dishes category</p>
+            <CategoryFilter />
         </div>
     )
 }
