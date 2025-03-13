@@ -7,7 +7,7 @@ export type MenuCard = {
 }
 
 export type User = {
-    id: string
+    _id: string
     email: string
     password: string
     phoneNumber: number
@@ -21,6 +21,7 @@ export type User = {
 }
 
 export type Food = {
+    _id: string
     foodName: string
     price: number 
     image: string
@@ -38,6 +39,7 @@ export type Category = {
 }
 
 export type FoodOrder = {
+    _id: string
     user: string
     totalPrice: number
     foodOrderItems: string

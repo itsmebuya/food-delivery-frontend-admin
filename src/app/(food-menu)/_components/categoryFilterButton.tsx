@@ -2,6 +2,7 @@
 
 import { Category } from "@/type"
 import { getCategory } from "@/utils/categoryRequests"
+import { Plus } from "lucide-react"
 import { useState, useEffect } from "react"
 
 export const CategoryFilterButton = () => {
@@ -28,10 +29,7 @@ export const CategoryFilterButton = () => {
     useEffect(() => {
         fetchCategory();
     }, [])
-
-    console.log(categories);
     
-
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -41,12 +39,18 @@ export const CategoryFilterButton = () => {
     }
 
     return(
-        <div className="cursor-pointer flex">
+        <div className="flex">
+            <div className="cursor-pointer">
+                All dishes
+            </div>
             {categories.map((cate) => (
-                <div key={cate._id} className="m-2">
+                <div key={cate._id} className="m-2 cursor-pointer">
                     {cate.categoryName}
                 </div>
             ))}
+            <div className="cursor-pointer rounded bg-red-500 flex justify-center items-center">
+                <Plus color="#FFFFFF"/>
+            </div>
         </div>
     )
 }
