@@ -5,7 +5,9 @@ import { SideMenu } from "@/components/sideMenu";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [page, setPage] = useState("Food menu")
+  const [page, setPage] = useState("Food menu");
+
+  let isLogin = false;
 
   return (
     <div className="flex">

@@ -6,7 +6,6 @@ export const FoodMenu = () => {
 
     return(
         <div>
-            <p>Dishes category</p>
             <CategoryFilter />
         </div>
     )

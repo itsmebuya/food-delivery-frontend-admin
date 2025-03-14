@@ -9,6 +9,7 @@ export const CategoryFilter = () => {
     
     return (
         <div>
+            <p>Dishes category</p>
             <CategoryFilterButton />
         </div>
     )
