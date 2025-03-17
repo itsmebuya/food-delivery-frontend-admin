@@ -2,21 +2,19 @@
 
 import { Category, Food } from "@/type"
 import { getCategory } from "@/utils/categoryRequests"
-import { getFood } from "@/utils/foodRequests"
 import { useEffect, useState } from "react"
+import { FoodCard } from "../_components/foodCard"
+import { AddFoodButton } from "../_components/addFoodButton"
 
 export const Categories = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
     const [categories, setCategories] = useState<Category[]>([])
-    const [foods, setFoods] = useState<Food[]>([])
 
-    const fetchCategoryAndFood = async () => {
+    const fetchCategory = async () => {
         setLoading(true);
         try {
             const categoryData = await getCategory();
-            const foodData = await getFood();
-            setFoods(foodData);
             setCategories(categoryData);
         } catch (error) {
             if (error instanceof Error) {
@@ -30,7 +28,7 @@ export const Categories = () => {
     }
 
     useEffect(() => {
-        fetchCategoryAndFood();
+        fetchCategory();
     }, [])
 
     if (loading) {
@@ -43,8 +41,18 @@ export const Categories = () => {
 
     return (
         <div>
-            {}
-            <p>cate</p>
+            {categories.map((cate) => (
+                <div key={cate._id}>
+                    <p className="text-xl">
+                        {cate.categoryName}
+                    </p>
+                    <div className="flex">
+                        <AddFoodButton _id={cate._id} category={cate.categoryName} />
+                        <FoodCard _id={cate._id} category={cate.categoryName} />
+                    </div>
+
+                </div>
+            ))}
         </div>
     )
 }

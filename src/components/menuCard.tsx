@@ -1,6 +1,6 @@
-import { MenuCard } from "@/type";
+import { MenuCardProps } from "@/type";
 
-export const HeaderCard = (props: MenuCard) => {
+export const HeaderCard = (props: MenuCardProps) => {
     const { title, Logo, onClick } = props;
 
     return (

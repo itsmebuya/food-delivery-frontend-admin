@@ -1,9 +1,14 @@
 import { JSX } from "react"
 
-export type MenuCard = {
+export type MenuCardProps = {
     title: string
     Logo: () => JSX.Element
     onClick: () => void
+}
+
+export type FoodCardProps = {
+    _id: string
+    category: string
 }
 
 export type User = {
