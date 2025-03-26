@@ -5,38 +5,51 @@ import { getCategory } from "@/utils/categoryRequests"
 import { useEffect, useState } from "react"
 import { FoodCard } from "../_components/foodCard"
 import { AddFoodButton } from "../_components/addFoodButton"
+import { useQuery } from "@tanstack/react-query"
 
 export const Categories = () => {
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState("")
-    const [categories, setCategories] = useState<Category[]>([])
+    // const [loading, setLoading] = useState(false)
+    // const [error, setError] = useState("")
+    // const [categories, setCategories] = useState<Category[]>([])
 
-    const fetchCategory = async () => {
-        setLoading(true);
-        try {
-            const categoryData = await getCategory();
-            setCategories(categoryData);
-        } catch (error) {
-            if (error instanceof Error) {
-                setError(error.message || "An unknown error occurred.");
-            } else {
-                setError("An unknown error occurred.");
-            }
-        } finally {
-            setLoading(false);
-        }
+    const fetchCategories = async (): Promise<Category[]> => {
+        const categoryData = await getCategory();
+        return categoryData;
     }
 
-    useEffect(() => {
-        fetchCategory();
-    }, [])
+    // const fetchCategory = async () => {
+    //     setLoading(true);
+    //     try {
+    //         const categoryData = await getCategory();
+    //         setCategories(categoryData);
+    //     } catch (error) {
+    //         if (error instanceof Error) {
+    //             setError(error.message || "An unknown error occurred.");
+    //         } else {
+    //             setError("An unknown error occurred.");
+    //         }
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // }
 
-    if (loading) {
+    // useEffect(() => {
+    //     fetchCategory();
+    // }, [])
+
+    const {
+        data: categories = [],
+        error,
+        isLoading,
+        isError
+    } = useQuery({queryKey:['categories'], queryFn:fetchCategories});
+
+    if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    if (error) {
-        return <div>Error: {error}</div>;
+    if (isError) {
+        return <div>Error: {error instanceof Error ? error.message : "An unknown error occurred."}</div>;
     }
 
     return (
