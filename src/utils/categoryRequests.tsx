@@ -5,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const instance = axios.create({ baseURL: BASE_URL });
 
 export const getCategory = async () => {
-    const { data } = await instance.get(`/categories`);
+    const { data } = await instance.get(`/categories`);    
     return data
 }
 

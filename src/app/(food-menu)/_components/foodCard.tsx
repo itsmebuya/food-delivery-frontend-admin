@@ -41,12 +41,20 @@ export const FoodCard = (props: FoodCardProps) => {
     }
 
     return (
-        <div>
+        <div className="flex gap-4">
             {filteredFoods.map((food) => (
-                <div key={food._id}>
-                    <p className="text-sm text-red-500">
-                        {food.foodName}
-                    </p>
+                <div key={food._id} className="flex flex-col w-[270px] h-[240px]">
+                    <div>
+
+                    </div>
+                    <div className="flex flex-col">
+                        <div className="flex justify-between">
+                            <p className="text-sm ">{food.foodName}</p>
+                            <p>${food.price}</p>
+                        </div>
+                        {food.ingredients}
+                    </div>
+
 
                 </div>
             ))}

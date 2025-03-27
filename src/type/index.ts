@@ -41,6 +41,7 @@ export type Category = {
     categoryName: string
     createdAt: Date
     updatedAt: Date
+    foodCount: number
 }
 
 export type FoodOrder = {

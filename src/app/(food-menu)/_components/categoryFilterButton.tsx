@@ -2,55 +2,54 @@
 
 import { Category } from "@/type"
 import { getCategory } from "@/utils/categoryRequests"
-import { Plus } from "lucide-react"
-import { useState, useEffect } from "react"
+import { getFood } from "@/utils/foodRequests"
+import { useQuery } from "@tanstack/react-query"
+import { AddCategoryButton } from "./addCategoryButton"
 
 export const CategoryFilterButton = () => {
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState("")
-    const [categories, setCategories] = useState<Category[]>([])
 
-    const fetchCategory = async () => {
-        setLoading(true);
-        try {
-            const categoryData = await getCategory();
-            setCategories(categoryData);
-        } catch (error) {
-            if (error instanceof Error) {
-                setError(error.message || "An unknown error occurred.");
-            } else {
-                setError("An unknown error occurred.");
-            }
-        } finally {
-            setLoading(false);
-        }
+    const fetchCategories = async (): Promise<Category[]> => {
+        const categoryData = await getCategory();
+        return categoryData;
     }
-
-    useEffect(() => {
-        fetchCategory();
-    }, [])
+    const fetchFoods = async() => {
+        const foodData = await getFood();
+        return foodData
+    }
     
-    if (loading) {
+    const {
+        data: categories ,
+        error,
+        isLoading,
+        isError
+    } = useQuery({ queryKey: ['categories'], queryFn: fetchCategories });
+
+    const {
+        data: foods 
+    } = useQuery({ queryKey: ['foods'], queryFn: fetchFoods });
+
+    if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    if (error) {
-        return <div>Error: {error}</div>;
+    if (isError) {
+        return <div>Error: {error instanceof Error ? error.message : "An unknown error occurred."}</div>;
     }
 
     return(
         <div className="flex">
             <div className="cursor-pointer">
-                All dishes
+                All dishes {foods.length}
             </div>
-            {categories.map((cate) => (
+            {categories?.map((cate) => (
                 <div key={cate._id} className="m-2 cursor-pointer">
-                    {cate.categoryName}
+                    {cate.categoryName} 
+                    <div>
+                        {cate.foodCount}
+                    </div>
                 </div>
             ))}
-            <div className="cursor-pointer rounded bg-red-500 flex justify-center items-center">
-                <Plus color="#FFFFFF"/>
-            </div>
+            <AddCategoryButton/>
         </div>
     )
 }
