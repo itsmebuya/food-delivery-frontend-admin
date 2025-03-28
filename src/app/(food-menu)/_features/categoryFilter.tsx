@@ -8,7 +8,7 @@ import { CategoryFilterButton } from "../_components/categoryFilterButton"
 export const CategoryFilter = () => {
     
     return (
-        <div>
+        <div className="bg-white rounded-xl">
             <p>Dishes category</p>
             <CategoryFilterButton />
         </div>

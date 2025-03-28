@@ -6,7 +6,7 @@ import { CategoryFilter } from "./_features/categoryFilter"
 export const FoodMenu = () => {
 
     return(
-        <div>
+        <div className="flex flex-col gap-5">
             <CategoryFilter />
             <Categories />
         </div>

@@ -31,10 +31,10 @@ export const Categories = () => {
     }
 
     return (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 max-h-[85vh] overflow-scroll">
             {categories.length > 0 ? (
                 categories.map((cate ) => (
-                    <div key={cate._id}>
+                    <div key={cate._id} className="flex flex-col gap-5 bg-white rounded-xl">
                         <p className="text-xl">
                             {cate.categoryName}
                         </p>

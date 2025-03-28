@@ -7,14 +7,12 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [page, setPage] = useState("Food menu");
 
-  let isLogin = false;
-
   return (
-    <div className="flex">
-      <div className="w-[15%]">
+    <div className="flex bg-[#f4f4f5]">
+      <div className="w-[15%] max-w-[220px]">
         <SideMenu setPage={setPage}/>
       </div>
-      <div className="w-[85%]">
+      <div className="w-[85%] m-5 ">
         <MainContent page={page} />
       </div>
     </div>
