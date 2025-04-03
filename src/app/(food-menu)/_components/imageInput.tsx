@@ -8,7 +8,7 @@ export const ImageInput = (props: ImageInputProps) => {
     const { handleUploadImg, prevImg } = props;
 
     return (
-        <div className="flex flex-col items-start gap-4">
+        <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="Ingredients" className="text-right">
                 Food image
             </Label>

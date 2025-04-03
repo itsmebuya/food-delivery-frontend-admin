@@ -3,6 +3,7 @@
 import { Food, FoodCardProps } from "@/type"
 import { getFood } from "@/utils/foodRequests";
 import { useEffect, useState } from "react";
+import { EditFoodButton } from "./editFoodButton";
 
 export const FoodCard = (props: FoodCardProps) => {
     const { _id } = props;
@@ -53,9 +54,8 @@ export const FoodCard = (props: FoodCardProps) => {
                             <p>${food.price}</p>
                         </div>
                         {food.ingredients}
+                        <EditFoodButton _id={food._id} />
                     </div>
-
-
                 </div>
             ))}
         </div>

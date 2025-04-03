@@ -72,8 +72,25 @@ export type createFoodParams = {
     category: string
 }
 
+export type UpdateFoodParams = {
+    id: string, 
+    foodName:string
+    price:number
+    image:string
+    ingredients:string
+    categoryId: string
+}
+
 export type addCategory = {
     category: string
+}
+
+export type EditFoodProps = {
+    _id: string
+}
+
+export type DeleteFoodProps = {
+    _id: string
 }
 
 export type createCategoryParams = {

@@ -22,8 +22,7 @@ import { createFood } from "@/utils/foodRequests";
 
 const CLOUDINARY_CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_API_KEY = process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY;
-const CLOUDINARY_UPLOAD_PRESET =
-  process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
+const CLOUDINARY_UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
 const API_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
 
 export const AddFoodButton = (props: FoodCardProps) => {
@@ -36,8 +35,6 @@ export const AddFoodButton = (props: FoodCardProps) => {
     if (!data) alert("Please insert photo");
 
     try {
-      console.log("file", data);
-
       const file = new FormData();
       file.append("file", data as File);
       file.append("upload_preset", CLOUDINARY_UPLOAD_PRESET as string);
@@ -48,7 +45,6 @@ export const AddFoodButton = (props: FoodCardProps) => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(response);
       return response.data.secure_url;
     } catch (error) {
       console.log(error);
