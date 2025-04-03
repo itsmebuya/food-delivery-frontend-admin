@@ -2,34 +2,25 @@
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
-import { ChangeEvent } from "react";
+import { ImageInputProps } from "@/type";
 
-export const ImageInput = () => {
-    const [data, setData] = useState<File>();
-    const [prevImg, setPrevImg] = useState<string>();
-
-    const handleUploadImg = (e: ChangeEvent<HTMLInputElement>) => {
-        const files = e?.target?.files;
-        if(!files) return
-
-        const file = files[0]
-        setData(file)
-
-        const reader = new FileReader();
-        reader.onload(() => {
-            setPrevImg(reader.result as string)
-        })
-
-        reader.readAsDataURL(file)
-    }
+export const ImageInput = (props: ImageInputProps) => {
+    const { handleUploadImg, prevImg } = props;
 
     return (
         <div className="flex flex-col items-start gap-4">
             <Label htmlFor="Ingredients" className="text-right">
-                Ingredients
+                Food image
             </Label>
-            <Input id="Ingredients" type="file" className="col-span-3 h-[90px]" placeholder="List ingredients..." />
+            <Input
+                id="Ingredients"
+                type="file"
+                onChange={handleUploadImg}
+                className="col-span-3 h-[90px]"
+                placeholder="List ingredients..."
+            />
+            <p>preview img</p>
+            {prevImg && <img src={prevImg} alt="preview image" />}
         </div>
     )
 }

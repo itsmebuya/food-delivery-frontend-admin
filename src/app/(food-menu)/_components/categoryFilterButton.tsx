@@ -1,12 +1,13 @@
 'use client'
 
-import { Category } from "@/type"
+import { Category, CategoryFilterParams } from "@/type"
 import { getCategory } from "@/utils/categoryRequests"
 import { getFood } from "@/utils/foodRequests"
 import { useQuery } from "@tanstack/react-query"
 import { AddCategoryButton } from "./addCategoryButton"
 
-export const CategoryFilterButton = () => {
+export const CategoryFilterButton = (props: CategoryFilterParams) => {
+    const {setSelectedCategory} = props
 
     const fetchCategories = async (): Promise<Category[]> => {
         const categoryData = await getCategory();
@@ -38,11 +39,11 @@ export const CategoryFilterButton = () => {
 
     return(
         <div className="flex">
-            <div className="cursor-pointer">
+            <div className="cursor-pointer" onClick={()=> setSelectedCategory("All dishes")}>
                 All dishes {foods.length}
             </div>
             {categories?.map((cate) => (
-                <div key={cate._id} className="m-2 cursor-pointer">
+                <div key={cate._id} className="m-2 cursor-pointer" onClick={()=> setSelectedCategory(cate.categoryName)}>
                     {cate.categoryName} 
                     <div>
                         {cate.foodCount}

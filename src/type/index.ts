@@ -1,4 +1,4 @@
-import { JSX } from "react"
+import { ChangeEvent, Dispatch, JSX, SetStateAction } from "react"
 
 export type MenuCardProps = {
     title: string
@@ -57,4 +57,33 @@ export type FoodOrder = {
 export type foodOrderItem = {
     food: string
     quantity: number
+}
+
+export type ImageInputProps = {
+    handleUploadImg: (e: ChangeEvent<HTMLInputElement>) => void;
+    prevImg: string | undefined
+}
+
+export type createFoodParams = {
+    foodName: string
+    price: number
+    ingredients: string
+    image: string
+    category: string
+}
+
+export type addCategory = {
+    category: string
+}
+
+export type createCategoryParams = {
+    categoryName: string
+}
+
+export type CategoryFilterParams = {
+    setSelectedCategory: Dispatch<SetStateAction<string>>;
+}
+
+export type CategoryParams = {
+    selectedCategory: string
 }

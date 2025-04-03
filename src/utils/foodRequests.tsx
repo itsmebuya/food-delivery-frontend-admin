@@ -1,3 +1,4 @@
+import { createFoodParams } from "@/type";
 import axios from "axios"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -9,8 +10,9 @@ export const getFood = async () => {
     return data
 }
 
-export const createFood = async (foodID: string) => {
-    const { data } = await instance.post(`/foods`, foodID);
+export const createFood = async ({foodName, price, ingredients, image, category}: createFoodParams) => {
+    const { data } = await instance.post(`/foods`, {foodName, price, ingredients, image, category});
+    console.log(data);
     return data
 }
 

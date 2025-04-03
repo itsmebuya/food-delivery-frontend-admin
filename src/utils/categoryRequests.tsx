@@ -1,3 +1,4 @@
+import { createCategoryParams } from "@/type";
 import axios from "axios"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -9,8 +10,8 @@ export const getCategory = async () => {
     return data
 }
 
-export const createCategory = async (categoryID: string) => {
-    const { data } = await instance.post(`/categories`, categoryID);
+export const createCategory = async (categoryName: string) => {
+    const { data } = await instance.post(`/categories`, {categoryName});
     return data
 }
 
