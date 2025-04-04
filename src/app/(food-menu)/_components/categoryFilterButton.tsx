@@ -40,7 +40,8 @@ export const CategoryFilterButton = (props: CategoryFilterParams) => {
     return(
         <div className="flex">
             <div className="cursor-pointer" onClick={()=> setSelectedCategory("All dishes")}>
-                All dishes {foods.length}
+                All dishes 
+                {/* {foods.length} */}
             </div>
             {categories?.map((cate) => (
                 <div key={cate._id} className="m-2 cursor-pointer" onClick={()=> setSelectedCategory(cate.categoryName)}>
