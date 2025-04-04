@@ -1,10 +1,9 @@
 "use client";
 
-import { FoodCardProps } from "@/type";
+import { FoodAddFormik, FoodCardProps } from "@/type";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -12,7 +11,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useFormik } from "formik";
 import { ImageInput } from "./imageInput";
 import { ChangeEvent, useState } from "react";
@@ -67,7 +65,7 @@ export const AddFoodButton = (props: FoodCardProps) => {
     reader.readAsDataURL(file);
   };
 
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async (values: FoodAddFormik) => {
     try {
       const img_url = await uploadCloudinary();
       const newData = { ...values, image: img_url, category: _id };
@@ -83,7 +81,7 @@ export const AddFoodButton = (props: FoodCardProps) => {
   const formik = useFormik({
     initialValues: {
       foodName: "",
-      price: "",
+      price: 0,
       ingredients: "",
       image: "",
     },

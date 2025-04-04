@@ -20,6 +20,8 @@ export const updateUser = async (userID: string) => {
 }
 
 export const deleteUser = async (userID: string) => {
-    const {data} = await instance.delete(`/users`)
+    const {data} = await instance.delete(`/users`, {
+        data: { userID }
+    })
     return data
 }

@@ -3,6 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ImageInputProps } from "@/type";
+import Image from "next/image";
 
 export const ImageInput = (props: ImageInputProps) => {
     const { handleUploadImg, prevImg } = props;
@@ -20,7 +21,8 @@ export const ImageInput = (props: ImageInputProps) => {
                 placeholder="List ingredients..."
             />
             <p>preview img</p>
-            {prevImg && <img src={prevImg} alt="preview image" />}
+            {prevImg && <Image src={prevImg} alt="preview image" />}
+            
         </div>
     )
 }

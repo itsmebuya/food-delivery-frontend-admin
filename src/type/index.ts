@@ -6,6 +6,7 @@ export type MenuCardProps = {
     onClick: () => void
 }
 
+
 export type FoodCardProps = {
     _id: string
     category: string
@@ -34,6 +35,22 @@ export type Food = {
     category: string
     createdAt: Date
     updatedAt: Date
+}
+
+export type FoodEditFormik = {
+    id:string
+    foodName: string;
+    price: number;
+    ingredients: string;
+    image: string;
+    categoryId: string;
+}
+
+export type FoodAddFormik = {
+    foodName: string
+      price: number
+      ingredients: string
+      image: string
 }
 
 export type Category = {

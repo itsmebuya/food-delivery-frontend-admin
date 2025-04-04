@@ -2,7 +2,7 @@
 
 import { MainContent } from "@/components/mainContent";
 import { SideMenu } from "@/components/sideMenu";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [page, setPage] = useState("Food menu");

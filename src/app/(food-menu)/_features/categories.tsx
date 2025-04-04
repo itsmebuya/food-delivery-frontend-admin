@@ -1,6 +1,6 @@
 "use client";
 
-import { Category, CategoryParams, Food } from "@/type";
+import { Category, CategoryParams } from "@/type";
 import { getCategory } from "@/utils/categoryRequests";
 import { FoodCard } from "../_components/foodCard";
 import { AddFoodButton } from "../_components/addFoodButton";
